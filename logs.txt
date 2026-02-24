@@ -1,0 +1,74 @@
+   ▲ Next.js 15.3.3 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.169:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Compiled middleware in 74ms
+ ✓ Ready in 708ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.8s
+ GET / 200 in 3137ms
+ GET / 200 in 51ms
+ ✓ Compiled /favicon.ico in 242ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 481ms
+ GET / 200 in 43ms
+ ✓ Compiled /api/chat in 308ms
+{
+  error: [Error [AI_APICallError]: invalid x-api-key] {
+    cause: undefined,
+    url: 'https://api.anthropic.com/v1/messages',
+    requestBodyValues: {
+      model: 'claude-haiku-4-5',
+      max_tokens: 10000,
+      temperature: 0,
+      top_k: undefined,
+      top_p: undefined,
+      stop_sequences: undefined,
+      system: [Array],
+      messages: [Array],
+      tools: [Array],
+      tool_choice: [Object],
+      stream: true
+    },
+    statusCode: 401,
+    responseHeaders: {
+      'cf-cache-status': 'DYNAMIC',
+      'cf-ray': '9ce6fa779afa2ecc-LAX',
+      connection: 'keep-alive',
+      'content-length': '130',
+      'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+      'content-type': 'application/json',
+      date: 'Sun, 15 Feb 2026 18:48:15 GMT',
+      'request-id': 'req_011CYAMVTzBry4mUmaZLAAZ4',
+      server: 'cloudflare',
+      'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+      'x-envoy-upstream-service-time': '6',
+      'x-robots-tag': 'none',
+      'x-should-retry': 'false'
+    },
+    responseBody: '{"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CYAMVTzBry4mUmaZLAAZ4"}',
+    isRetryable: false,
+    data: { type: 'error', error: [Object] }
+  }
+}
+ POST /api/chat 200 in 532ms
+   Reload env: .env
+ GET / 200 in 92ms
+ GET / 200 in 238ms
+No ANTHROPIC_API_KEY found, using mock provider
+ POST /api/chat 200 in 12463ms
+ ✓ Compiled in 42ms
+ GET / 200 in 88ms
+ GET / 200 in 59ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 280ms
+No ANTHROPIC_API_KEY found, using mock provider
+ POST /api/chat 200 in 12560ms
+   Reload env: .env
+ GET / 200 in 96ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 256ms
+   Reload env: .env
+ GET / 200 in 73ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 238ms
+ GET / 200 in 292ms
+ POST /api/chat 200 in 12906ms
