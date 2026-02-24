@@ -23,6 +23,7 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -39,13 +40,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: ${{ github.event.inputs.prompt || 'Review this pull request and suggest improvements' }}
-          custom_instructions: |
-            The project is already set up with all dependencies installed.
-            The server is already running at localhost:3000. Logs from it
-            are being written to logs.txt. If needed, you can query the
-            db with the 'sqlite3' cli. If needed, use the mcp_playwright
-            set of tools to launch a browser and interact with the app.
-          mcp_config: |
+          settings: |
             {
               "mcpServers": {
                 "playwright": {
@@ -56,6 +51,12 @@ jobs:
                     "localhost:3000;cdn.tailwindcss.com;esm.sh"
                   ]
                 }
-              }
+              },
+              "allowedTools": [
+                "Bash(npm:*)",
+                "Bash(sqlite3:*)",
+                "mcp__playwright__browser_snapshot",
+                "mcp__playwright__browser_click"
+              ]
             }
-          allowed_tools: "Bash(npm:*), Bash(sqlite3:*), mcp__playwright__browser_snapshot, mcp__playwright__browser_click"
+          claude_args: "--append-system-prompt 'The project is already set up with all dependencies installed. The server is already running at localhost:3000. Logs from it are being written to logs.txt. If needed, you can query the db with the sqlite3 cli. If needed, use the mcp_playwright set of tools to launch a browser and interact with the app.'"
